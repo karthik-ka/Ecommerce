@@ -22,9 +22,9 @@ const subMenuData = [
 const MonileMenu = ({ setShowCatMenu, showCatMenu, mobileMenu }) => {
   return (
     <div
-      className={`${ mobileMenu === false && "hidden"} md:hidden  absolute top-0 left-0 bg-eco-off-white w-[50%] h-[100vh]`}>
-      <img src={logo} alt="Brand-logo" className="w-24 pt-6 ml-6" />
-      <ul className="mt-14">
+      className={`${ mobileMenu === false && "hidden"} md:hidden  absolute top-0 left-0 bg-eco-off-white w-[60%] h-[100vh]`}>
+      <img src={logo} alt="Brand-logo" className="w-24 pt-6 ml-4" />
+      <ul className="mt-14 ml-4">
         {data.map((item) => {
           return (
             <Link to={item.url} key={item.id}>
@@ -38,7 +38,7 @@ const MonileMenu = ({ setShowCatMenu, showCatMenu, mobileMenu }) => {
                           <Link to={item.url} key={item.id}>
                             <li className="my-2 flex justify-between">
                               {item.name}
-                              <span className="">{item.doc_count}</span>
+                              <span className="pr-2">{item.doc_count}</span>
                             </li>
                           </Link>
                         );

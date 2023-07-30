@@ -40,9 +40,8 @@ useEffect(() => {
 
 
   return (
-    <div className={`w-full  z-20 sticky top-0 transition-transform duration-300 ${show}`}>
-    {/* <div className="fixed w-full shadow-sm" > */}
-      <div className="flex h-[50px] md:h-[80px] max-w-[380px] md:max-w-[700px] lg:max-w-[900px] xl:max-w-[1280px] m-auto justify-between items-center">
+    <div className={`w-full z-20 sticky top-0 transition-transform duration-300 ${show} bg-eco-white shadow-sm`}>
+      <div className="flex h-[50px] md:h-[80px] max-w-[95vw] md:max-w-[700px] lg:max-w-[900px] xl:max-w-[1280px] m-auto justify-between items-center">
         <img src={logo} alt="Brand-logo" className="w-24" />
 
         <div className="">

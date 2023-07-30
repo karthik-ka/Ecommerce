@@ -5,9 +5,11 @@ export default {
     colors: {
      "eco-off-black": "#333333",
      "eco-black": "#000000",
+     "eco-light-black": "#161c25",
      "eco-grey": "#757575",
      "eco-off-white": "#FAFAFA",
      "eco-white": "#fff",
+     "eco-light-grey": "#ebeef2",
      "eco-red": "#FF5555"
     },
     extend: {},
