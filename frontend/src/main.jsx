@@ -6,7 +6,6 @@ import Home from "./component/Home";
 import Product from "./component/Product"
 import Products from "./component/Products"
 import Footer from "./component/Footer";
-import Contact from "./component/Contact";
 import Error from "./component/Error";
 
 
@@ -37,10 +36,6 @@ const AppLayout = () => {
         {
           path: "/products/:id",
           element: <Products />
-        },
-        {
-          path: "/contact",
-          element: <Contact />
         },
       ],
     },

@@ -31,11 +31,11 @@ const Menu = ({ setShowCatMenu, showCatMenu }) => {
               >
                 {item.name} <ExpandMoreRoundedIcon />
                 {showCatMenu && (
-                  <ul className="absolute top-[85px] bg-eco-offf-white ">
+                  <ul className="absolute top-[80px] bg-eco-off-white rounded-b-md">
                     {subMenuData.map((item) => {
                       return (
                          <Link to={item.url} key={item.id}>
-                         <li className="flex w-48 h-8 m-1 bg-eco-off-white items-center justify-between">
+                         <li className="flex w-48 h-8 m-1 p-4 bg-eco-off-white items-center justify-between">
                            {item.name}
                            <span className="">{item.doc_count}</span>
                          </li>

@@ -54,6 +54,7 @@ const Footer = () => {
         </div>
 
       </div>
+      <span className="flex justify-center pt-8 pb-4 text-eco-grey text-xs">Copyright © 2023, All Rights Reserved by NOSTRA</span>
     </footer>
   );
 };
