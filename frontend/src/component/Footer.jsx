@@ -4,10 +4,10 @@ import payment from "../assets/payment.png";
 const Footer = () => {
   return (
     <footer className="bg-eco-light-grey">
-      <div className="md:flex h-fit md:h-[220px] py-10 max-w-[95vw] md:max-w-[700px] lg:max-w-[900px] xl:max-w-[1280px] m-auto justify-evenly">
+      <div className="md:flex h-fit md:h-[220px] py-10 max-w-[90vw] md:max-w-[700px] lg:max-w-[900px] xl:max-w-[1280px] m-auto justify-evenly">
         <div className="text-eco-grey">
-          <img src={logo} alt="brand logo" className="w-16 md:w-28" />
-          <p className="text-[8px] lg:text-sm max-w-xs my-6">
+          <img src={logo} alt="brand logo" className="w-20 md:w-28" />
+          <p className="text-[8px] lg:text-sm max-w-xs mt-2 mb-6">
             Specializes in provideing high-quality, stylish product fror your
             wardrob.
           </p>

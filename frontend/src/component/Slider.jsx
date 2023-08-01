@@ -10,7 +10,7 @@ import slide3 from "../assets/slide-3.jpg";
 
 const Slider = () => {
   return (
-    <div className="rounded-3xl overflow-hidden pb-16 pt-4">
+    <div className="md:rounded-3xl overflow-hidden pb-16 pt-1 md:max-w-[700px] lg:max-w-[900px] xl:max-w-[1280px] m-auto ">
       <Carousel
         autoPlay={true}
         infiniteLoop={true}
@@ -34,13 +34,13 @@ const Slider = () => {
         )}
       >
         <div>
-          <img src={slide1} className="rounded-3xl object-cover" />
+          <img src={slide1} className="md:rounded-3xl h-60 md:h-full object-cover" />
         </div>
         <div>
-          <img src={slide2} className="rounded-3xl object-cover" />
+          <img src={slide2} className="md:rounded-3xl h-60 md:h-full object-cover" />
         </div>
         <div>
-          <img src={slide3} className="rounded-3xl object-cover" />
+          <img src={slide3} className="md:rounded-3xl h-60 md:h-full object-cover" />
         </div>
       </Carousel>
     </div>

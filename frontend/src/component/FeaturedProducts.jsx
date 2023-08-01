@@ -8,7 +8,7 @@ const data = [
 
 const FeaturedProducts = () => {
   return (
-    <section className="py-16">
+    <section className="md:py-16">
       <h1 className="pb-16 text-center text-3xl font-bold text-eco-off-black">Featured Products</h1>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {
