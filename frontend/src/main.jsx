@@ -2,11 +2,13 @@ import ReactDOM  from "react-dom/client";
 import { createBrowserRouter,  Outlet, RouterProvider } from "react-router-dom";
 import "./index.css"
 import Navbar from "./component/Header/Navbar";
-import Home from "./component/Home";
-import Product from "./component/Product"
+import Home from "./pages/Home";
+import Product from "./pages/Product"
 import Products from "./component/Products"
 import Footer from "./component/Footer";
 import Error from "./component/Error";
+import Cart from "./pages/Cart";
+import Wishlist from "./pages/wishlist";
 
 
 const AppLayout = () => {
@@ -36,6 +38,14 @@ const AppLayout = () => {
         {
           path: "/products/:id",
           element: <Products />
+        },
+        {
+          path: "/cart",
+          element: <Cart />
+        },
+        {
+          path: "/wishlist",
+          element: <Wishlist />
         },
       ],
     },

@@ -1,8 +1,8 @@
-import About from "./About";
-import Categegories from "./Categegories";
-import FeaturedProducts from "./FeaturedProducts";
-import Slider from "./Slider";
-import Contact from "./Contact";
+import About from "../component/About";
+import Categegories from "../component/Categegories";
+import FeaturedProducts from "../component/FeaturedProducts";
+import Slider from "../component/Slider";
+import Contact from "../component/Contact";
 
 const Home = () => {
   return (
