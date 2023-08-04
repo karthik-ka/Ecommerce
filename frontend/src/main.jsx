@@ -4,14 +4,14 @@ import "./index.css"
 import Navbar from "./component/Header/Navbar";
 import Home from "./pages/Home";
 import Product from "./pages/Product"
-import Products from "./component/Products"
+import Products from "./pages/Products"
 import Footer from "./component/Footer";
 import Error from "./component/Error";
 import Cart from "./pages/Cart";
 import Wishlist from "./pages/wishlist";
 
 
-const AppLayout = () => {
+const AppLayout = () => { 
   return (
     <>
       <Navbar />

@@ -1,4 +1,4 @@
-import Products from "./Products";
+import ProductsCard from "./ProductCard";
 const data = [
     { id: 1, name: "Shoes", image: "../p1.png", price:"10000", rating:"4.5", prevPrice: "15000" },
     { id: 2, name: "Shirt", image: "../p2.png", price:"10000", rating:"3.5", prevPrice: "15000" },
@@ -8,12 +8,12 @@ const data = [
 
 const FeaturedProducts = () => {
   return (
-    <section className="md:py-16">
+    <section className="py-16">
       <h1 className="pb-16 text-center text-3xl font-bold text-eco-off-black">Featured Products</h1>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 m-auto">
         {
             data.map((item)=>{
-                return <Products products={item} key={item.id} />
+                return <ProductsCard products={item} key={item.id} />
             })
         }
       </div>

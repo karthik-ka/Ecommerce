@@ -9,6 +9,7 @@ const data = { id: 1, title: "Nike jordan 5xl", subtitle: "Running shoes for men
 	img4: "../p4.png",
 	}, price: "10000", prevPrice: "15000", };
 
+
 const Product = () => {
 	const [image, setImage] = useState("img1");
 	const [active, setActive] = useState("");

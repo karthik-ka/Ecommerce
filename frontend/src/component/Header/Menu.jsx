@@ -10,12 +10,12 @@ const data = [
 ];
 
 const subMenuData = [
-	{ id: 1, name: "Sale", url:"/sales", doc_count: 11 },
-	{ id: 2, name: "New Season", url:"/new", doc_count: 8 },
-	{ id: 3, name: "Men", url:"/men", doc_count: 64 },
-	{ id: 4, name: "Women", url:"/women", doc_count: 58 },
-	{ id: 5, name: "Shoes", url:"/shoes", doc_count: 70 },
-	{ id: 6, name: "Accessories", url:"/accessories", doc_count: 15 },
+	{ id: 1, name: "Sale", url:"/products/sales", doc_count: 11 },
+	{ id: 2, name: "New Season", url:"/products/new", doc_count: 8 },
+	{ id: 3, name: "Men", url:"/products/men", doc_count: 64 },
+	{ id: 4, name: "Women", url:"/products/women", doc_count: 58 },
+	{ id: 5, name: "Shoes", url:"/products/shoes", doc_count: 70 },
+	{ id: 6, name: "Accessories", url:"/products/accessories", doc_count: 15 },
 ];
 
 const Menu = ({ setShowCatMenu, showCatMenu }) => {

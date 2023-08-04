@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
+import {Link} from "react-router-dom"
 
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 
@@ -10,7 +11,7 @@ import slide3 from "../assets/slide-3.jpg";
 
 const Slider = () => {
   return (
-    <div className="md:rounded-3xl overflow-hidden pb-16 pt-1 md:max-w-[700px] lg:max-w-[900px] xl:max-w-[1280px] m-auto ">
+    <div className="md:rounded-3xl overflow-hidden pt-1 md:max-w-[700px] lg:max-w-[900px] xl:max-w-[1280px] m-auto relative ">
       <Carousel
         autoPlay={true}
         infiniteLoop={true}
@@ -43,6 +44,7 @@ const Slider = () => {
           <img src={slide3} className="md:rounded-3xl h-60 md:h-full object-cover" />
         </div>
       </Carousel>
+     <Link to="/products/1"> <button className="bg-eco-white font-medium absolute top-[28rem] px-10 py-4 text-eco-light-black hover:text-eco-black">Shop Now</button></Link>
     </div>
   );
 };

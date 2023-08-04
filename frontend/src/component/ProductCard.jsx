@@ -5,13 +5,14 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Link } from "react-router-dom";
 
 
-const Products = ({ products }) => {
+const ProductCard = ({ products }) => {
 
 	const [heart, setHeart] = useState(false);
 
 	return (
 		<Link to={`/product/${products.id}`} className="bg-eco-light-grey text-eco-off-black rounded-xl overflow-hidden relative">
-		<img src={products.image} alt="no image" className="w-full h-[180px] md:h-[280px] object-cover" />
+		<img src={products.image} alt="no image" className="w-full h-[180px] xl:h-[280px] object-cover " />
+
 		{!heart ? (
 			<FavoriteBorderIcon
 			className="absolute top-4 right-4 cursor-pointer ease-out"
@@ -35,4 +36,4 @@ const Products = ({ products }) => {
 	);
 };
 
-export default Products;
+export default ProductCard;
