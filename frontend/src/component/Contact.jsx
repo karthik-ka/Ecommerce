@@ -1,6 +1,6 @@
 const Contact = () => {
   return (
-    <section className="md:flex justify-evenly py-16">
+    <section className="md:flex justify-evenly py-8" id="contact">
       <div className="grid grid-cols-2 gap-2 w-60">
         <img className="w-28 h-28 object-cover object-top rounded-full" src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=420&q=80" alt="" />
         <img className="w-28 h-28 object-cover rounded-tl-[70%]" src="https://images.unsplash.com/photo-1485518882345-15568b007407?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGZhc2hpb24lMjBzdG9yZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=400&q=60" alt="" />

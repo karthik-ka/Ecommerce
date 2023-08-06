@@ -3,6 +3,7 @@ import Categegories from "../component/Categegories";
 import FeaturedProducts from "../component/FeaturedProducts";
 import Slider from "../component/Slider";
 import Contact from "../component/Contact";
+import Collection from "../component/Collection";
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
         <FeaturedProducts />
         <About />
         <Categegories />
+        <Collection />
         <Contact />
       </div>
     </>

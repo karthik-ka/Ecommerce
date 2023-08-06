@@ -13,6 +13,7 @@ const data = { id: 1, title: "Nike jordan 5xl", subtitle: "Running shoes for men
 const Product = () => {
 	const [image, setImage] = useState("img1");
 	const [active, setActive] = useState("");
+	const [available, setAvailable] = useState(true);
 
 	return (
 		<section className="max-w-[90vw] md:max-w-[700px] lg:max-w-[900px] xl:max-w-[1200px] m-auto ">
@@ -62,14 +63,14 @@ const Product = () => {
 							<h2 className="text-eco-grey cursor-pointer">Select Guide</h2>
 						</span>
 						<div className="flex flex-wrap gap-1 my-4">
-						<button className={`w-14 h-8 border-2 rounded-md ${active === "XS" ? "border-eco-black" : "border-eco-light-grey" } shadow-sm transition ease-in hover:border-eco-black`} onClick={(e)=>setActive(e.target.innerHTML)} >XS</button>
-						<button className={`w-14 h-8 border-2 rounded-md ${active === "S" ? "border-eco-black" : "border-eco-light-grey" } shadow-sm transition ease-in hover:border-eco-black`} onClick={(e)=>setActive(e.target.innerHTML)} >S</button>
-						<button className={`w-14 h-8 border-2 rounded-md ${active === "M" ? "border-eco-black" : "border-eco-light-grey" } shadow-sm transition ease-in hover:border-eco-black`} onClick={(e)=>setActive(e.target.innerHTML)} >M</button>
-						<button className={`w-14 h-8 border-2 rounded-md ${active === "L" ? "border-eco-black" : "border-eco-light-grey" } shadow-sm transition ease-in hover:border-eco-black`} onClick={(e)=>setActive(e.target.innerHTML)} >L</button>
-						<button className={`w-14 h-8 border-2 rounded-md ${active === "XL" ? "border-eco-black" : "border-eco-light-grey" } shadow-sm transition ease-in hover:border-eco-black`} onClick={(e)=>setActive(e.target.innerHTML)} >XL</button>
-						<button className={`w-14 h-8 border-2 rounded-md ${active === "2XL" ? "border-eco-black" : "border-eco-light-grey" } shadow-sm transition ease-in hover:border-eco-black`} onClick={(e)=>setActive(e.target.innerHTML)} >2XL</button>
-						<button className={`w-14 h-8 border-2 rounded-md ${active === "3XL" ? "border-eco-black" : "border-eco-light-grey" } shadow-sm transition ease-in hover:border-eco-black`} onClick={(e)=>setActive(e.target.innerHTML)} >3XL</button>
-						<button className={`w-14 h-8 border-2 rounded-md ${active === "4XL" ? "border-eco-black" : "border-eco-light-grey" } shadow-sm transition ease-in hover:border-eco-black`} onClick={(e)=>setActive(e.target.innerHTML)} >4XL</button>
+						<button className={`w-14 h-8 border-2 rounded-md ${active === "XS" ? "border-eco-black" : "border-eco-light-grey" } ${!available && "bg-eco-grey opacity-60 cursor-not-allowed"} shadow-sm transition ease-in hover:border-eco-black`} onClick={(e)=>setActive(e.target.innerHTML)} >XS</button>
+						<button className={`w-14 h-8 border-2 rounded-md ${active === "S" ? "border-eco-black" : "border-eco-light-grey" } ${!available && "bg-eco-grey opacity-60 cursor-not-allowed"} shadow-sm transition ease-in hover:border-eco-black`} onClick={(e)=>setActive(e.target.innerHTML)} >S</button>
+						<button className={`w-14 h-8 border-2 rounded-md ${active === "M" ? "border-eco-black" : "border-eco-light-grey" } ${!available && "bg-eco-grey opacity-60 cursor-not-allowed"} shadow-sm transition ease-in hover:border-eco-black`} onClick={(e)=>setActive(e.target.innerHTML)} >M</button>
+						<button className={`w-14 h-8 border-2 rounded-md ${active === "L" ? "border-eco-black" : "border-eco-light-grey" } ${!available && "bg-eco-grey opacity-60 cursor-not-allowed"} shadow-sm transition ease-in hover:border-eco-black`} onClick={(e)=>setActive(e.target.innerHTML)} >L</button>
+						<button className={`w-14 h-8 border-2 rounded-md ${active === "XL" ? "border-eco-black" : "border-eco-light-grey" } ${!available && "bg-eco-grey opacity-60 cursor-not-allowed"} shadow-sm transition ease-in hover:border-eco-black`} onClick={(e)=>setActive(e.target.innerHTML)} >XL</button>
+						<button className={`w-14 h-8 border-2 rounded-md ${active === "2XL" ? "border-eco-black" : "border-eco-light-grey" } ${available && "bg-eco-grey opacity-60 cursor-not-allowed"} shadow-sm transition ease-in hover:border-eco-black`} onClick={(e)=>setActive(e.target.innerHTML)} >2XL</button>
+						<button className={`w-14 h-8 border-2 rounded-md ${active === "3XL" ? "border-eco-black" : "border-eco-light-grey" } ${available && "bg-eco-grey opacity-60 cursor-not-allowed"} shadow-sm transition ease-in hover:border-eco-black`} onClick={(e)=>setActive(e.target.innerHTML)} >3XL</button>
+						<button className={`w-14 h-8 border-2 rounded-md ${active === "4XL" ? "border-eco-black" : "border-eco-light-grey" } ${available && "bg-eco-grey opacity-60 cursor-not-allowed"} shadow-sm transition ease-in hover:border-eco-black`} onClick={(e)=>setActive(e.target.innerHTML)} >4XL</button>
 					</div>
 					</div>
 					<div className="md:flex gap-2 lg:flex-col ">

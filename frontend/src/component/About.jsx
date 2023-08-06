@@ -5,8 +5,8 @@ import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined
 
 const About = () => {
   return (
-    <section className="py-16">
-      <div className="md:flex justify-between pb-16">
+    <section className="py-8" id='about'>
+      <div className="md:flex justify-between pb-8">
         <h1 className="md:text-3xl font-semibold text-eco-light-black max-w-[24rem] pb-2">We provide best customer experiences</h1>
         <p className='text-sm text-eco-grey border-l-4 flex items-center px-8'>we ensure our customers have the best shopping experience</p>
       </div>

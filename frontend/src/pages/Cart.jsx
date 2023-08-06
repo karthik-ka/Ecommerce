@@ -26,7 +26,7 @@ const Cart = () => {
          <div className='md:px-6 flex-1'>
             <div className='flex pb-6 justify-between'>
                <h1 className='font-semibold text-2xl'>Cart</h1>
-               <span className='text-sm font-semibold'><DeleteOutlineOutlinedIcon fontSize='10'/>Clear cart</span>
+               <span className='text-sm font-semibold text-eco-red cursor-pointer'><DeleteOutlineOutlinedIcon fontSize='10'/>Clear cart</span>
             </div>
             <table className='w-full'>
                <tr className='text-eco-grey border-b-2 border-eco-light-grey'>
@@ -46,7 +46,7 @@ const Cart = () => {
                            <button className='px-3 py-1 rounded-sm mx-1 bg-eco-light-grey' onClick={handleDec}>-</button>
                            <span className='font-medium'>{count}</span>
                            <button className='px-3 py-1 rounded-sm mx-1 bg-eco-light-grey' onClick={handleInc}>+</button>
-                           <p className='text-sm font-semibold my-2'><DeleteOutlineOutlinedIcon fontSize='10'/>Remove</p>
+                           <p className='text-sm font-semibold my-2 text-eco-red cursor-pointer'><DeleteOutlineOutlinedIcon fontSize='10'/>Remove</p>
                         </td>
                         <td>
                            <h2 className='font-medium'>₹{item.price}</h2>
@@ -74,7 +74,7 @@ const Cart = () => {
                <h2>Grand total</h2>
                <p className='font-semibold'>₹{data[0].price}</p>
             </div>
-               <div className='py-3 w-72 m-auto text-center bg-eco-off-black text-eco-white rounded-lg cursor-pointer'>Checkout</div>
+               <div className='py-3 w-72 m-auto text-center bg-eco-off-black text-eco-white rounded-lg cursor-pointer hover:bg-eco-black transition ease-in'>Checkout</div>
          </div>
       </div>
    </section>
