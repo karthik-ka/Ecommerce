@@ -2,8 +2,7 @@ import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined
 import { useState } from 'react';
 
 const data = [
-   { id: 1, title: "Nike jordan 5xl", image: "../p1.png", price: "10000"},
-   { id: 2, title: "Nike jordan 5xl", image: "../p1.png", price: "10000"}
+   { id: 1, title: "Nike jordan 5xl", image: "../p1.png", price: "10000"}
 ];
 
 const Cart = () => {

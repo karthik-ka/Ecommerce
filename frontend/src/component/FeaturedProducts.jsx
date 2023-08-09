@@ -1,23 +1,23 @@
+import useFetch from "../hooks/useFetch";
 import ProductsCard from "./ProductCard";
-const data = [
-    { id: 1, name: "Shoes", image: "../p1.png", price:"10000", rating:"4.5", prevPrice: "15000" },
-    { id: 2, name: "Shirt", image: "../p2.png", price:"10000", rating:"3.5", prevPrice: "15000" },
-    { id: 3, name: "Jeans", image: "../p3.png", price:"10000", rating:"5.0", prevPrice: "15000" },
-    { id: 4, name: "Bag", image: "../p4.png", price:"10000", rating:"1.5", prevPrice: "15000" },
-  ];
+import {Shimmer_4} from "./Shimmer"
 
 const FeaturedProducts = () => {
+
+  const {data, loading, error} = useFetch("/products?populate=*&filters[type][$eq]=featured")
+
   return (
     <section className="pb-8 md:pb-16 pt-32">
       <h1 className="pb-8 text-center text-3xl font-bold text-eco-off-black">Featured Products</h1>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 m-auto">
-        {
+        { loading ? <Shimmer_4 /> :
             data.map((item)=>{
                 return <ProductsCard products={item} key={item.id} />
             })
         }
       </div>
     </section>
+  
   );
 };
 

@@ -10,7 +10,10 @@ export default {
      "eco-off-white": "#FAFAFA",
      "eco-white": "#fff",
      "eco-light-grey": "#ebeef2",
-     "eco-red": "#FF5555"
+     "eco-red": "#FF5555",
+     "eco-green": "#52c56d",
+     "eco-yellow": "#ffc504",
+     "eco-orange": "#ff9700",
     },
     extend: {},
   },

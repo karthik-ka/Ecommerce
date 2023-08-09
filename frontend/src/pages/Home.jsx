@@ -6,6 +6,7 @@ import Contact from "../component/Contact";
 import Collection from "../component/Collection";
 
 const Home = () => {
+
   return (
     <>
       <Slider />
