@@ -10,7 +10,6 @@ const Collage = () => {
 
     const [category, setCategory] = useState("tshirt");
     const {data, loading} = useFetch(`http://localhost:1337/api/products?populate=*&sort=id:ASC&_q=women&filters[$and][1][isNew][$eq]=true&filters[$and][2][sub_categories][title][$eq]=${category}`)
-    console.log("womendata===",data);
 
   return (
     <>

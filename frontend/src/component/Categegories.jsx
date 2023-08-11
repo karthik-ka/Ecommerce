@@ -8,7 +8,7 @@ const Categegories = () => {
       </h1>
       <div className="grid md:grid-cols-4 md:grid-rows-2 gap-2">
        {/* ! image-1  */}
-        <Link to={"/products/sale"} className="relative">
+        <Link to={"/products/12"} className="relative">
           <img src="https://images.unsplash.com/photo-1574634534894-89d7576c8259?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=464&q=80" alt=""
             className="w-full h-[300px] object-cover object-bottom hover:brightness-50 transition ease-in"
           />

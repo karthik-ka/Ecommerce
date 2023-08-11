@@ -1,34 +1,31 @@
 import { useState } from "react";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import StarIcon from "@mui/icons-material/Star";
-
-const data = { id: 1, title: "Nike jordan 5xl", subtitle: "Running shoes for men", rating: "4.5", image: {
-	img1: "../p1.png",
-	img2: "../p2.png",
-	img3: "../p3.png",
-	img4: "../p4.png",
-	}, price: "10000", prevPrice: "15000", };
-
+import useFetch from "../hooks/useFetch";
+import { useParams } from "react-router-dom";
+import { Shimmer_4 } from "../component/Shimmer";
 
 const Product = () => {
-	const [image, setImage] = useState("img1");
+	const {id} = useParams();
+
+	const {data, loading} = useFetch(`/products?populate=*&sort=id:ASC&filters[$and][0][id][$eq]=${id}`)
+
+	const [img, setImg] = useState();
 	const [active, setActive] = useState("");
-	const [available, setAvailable] = useState(true);
 
 	return (
 		<section className="max-w-[90vw] md:max-w-[700px] lg:max-w-[900px] xl:max-w-[1200px] m-auto ">
 			<div className="lg:flex py-4 lg:py-16 justify-around">
-				{/* -----------------------Image section-------------------------- */}
 
+				{/* -----------------------Image section-------------------------- */}
 				<div className="flex flex-col lg:flex-row">
 					<div className="flex gap-2 w-20 order-2 lg:flex-col my-2 lg:my-0 lg:mx-2">
-						<img src={data.image.img1} alt="" className="rounded-xl cursor-pointer" onClick={() => setImage("img1")} />
-						<img src={data.image.img2} alt="" className="rounded-xl cursor-pointer" onClick={() => setImage("img2")} />
-						<img src={data.image.img3} alt="" className="rounded-xl cursor-pointer" onClick={() => setImage("img3")} />
-						<img src={data.image.img4} alt="" className="rounded-xl cursor-pointer" onClick={() => setImage("img4")} />
+						{loading ? <Shimmer_4 /> :data[0]?.attributes?.image?.data?.map((item)=>{
+							return (<img src={item?.attributes?.url} key={item.id} alt="" className="rounded-xl cursor-pointer" onClick={() => setImg(item?.attributes?.url)} />);
+						})}
 					</div>
-					<div className="flex lg:order-2 lg:w-[30rem] rounded-xl overflow-hidden">
-							<img src={data.image[image]} alt="" className="" />
+					<div className="flex lg:order-2 lg:w-[30rem] lg:h-[35rem] rounded-xl object-cover overflow-hidden">
+							<img src={img} alt="" className="" />
 					</div>
 				</div>
 
@@ -36,21 +33,21 @@ const Product = () => {
 				<div className="text-eco-off-black lg:w-[28rem]">
 					<div className="">
 						<h1 className="text-3xl font-semibold pt-4 md:py-0">
-							{data.title}
+							{data[0]?.attributes?.title}
 						</h1>
 						<p className="text-sm font-medium text-eco-grey my-2">
-							{data.subtitle}
+							{data[0]?.attributes?.subtitle}
 						</p>
 						<span className="text-eco-white text-sm bg-eco-off-black px-2 py-1 rounded-lg align-middle">
 							<StarIcon />
-							{data.rating}
+							{data[0]?.attributes?.rating}
 						</span>
 					</div>
 					<hr className="opacity-20 my-4" />
 					<div className="">
 						<h2 className="text-xl font-medium">
-							MRP : ₹{data.price}{" "}
-							<span className="text-base line-through">₹{data.prevPrice}</span>
+							MRP : ₹{data[0]?.attributes?.price}
+							<span className="text-base line-through">₹{data[0]?.attributes?.oldPrice}</span>
 						</h2>
 						<span className="text-eco-grey text-sm">
 							incl. of taxes <br /> (Also includes all applicable duties)
@@ -63,14 +60,9 @@ const Product = () => {
 							<h2 className="text-eco-grey cursor-pointer">Select Guide</h2>
 						</span>
 						<div className="flex flex-wrap gap-1 my-4">
-						<button className={`w-14 h-8 border-2 rounded-md ${active === "XS" ? "border-eco-black" : "border-eco-light-grey" } ${!available && "bg-eco-light-grey opacity-70 cursor-not-allowed"} shadow-sm transition ease-in hover:border-eco-black`} onClick={(e)=>setActive(e.target.innerHTML)} >XS</button>
-						<button className={`w-14 h-8 border-2 rounded-md ${active === "S" ? "border-eco-black" : "border-eco-light-grey" } ${!available && "bg-eco-light-grey opacity-70 cursor-not-allowed"} shadow-sm transition ease-in hover:border-eco-black`} onClick={(e)=>setActive(e.target.innerHTML)} >S</button>
-						<button className={`w-14 h-8 border-2 rounded-md ${active === "M" ? "border-eco-black" : "border-eco-light-grey" } ${!available && "bg-eco-light-grey opacity-70 cursor-not-allowed"} shadow-sm transition ease-in hover:border-eco-black`} onClick={(e)=>setActive(e.target.innerHTML)} >M</button>
-						<button className={`w-14 h-8 border-2 rounded-md ${active === "L" ? "border-eco-black" : "border-eco-light-grey" } ${!available && "bg-eco-light-grey opacity-70 cursor-not-allowed"} shadow-sm transition ease-in hover:border-eco-black`} onClick={(e)=>setActive(e.target.innerHTML)} >L</button>
-						<button className={`w-14 h-8 border-2 rounded-md ${active === "XL" ? "border-eco-black" : "border-eco-light-grey" } ${!available && "bg-eco-light-grey opacity-70 cursor-not-allowed"} shadow-sm transition ease-in hover:border-eco-black`} onClick={(e)=>setActive(e.target.innerHTML)} >XL</button>
-						<button className={`w-14 h-8 border-2 rounded-md ${active === "2XL" ? "border-eco-black" : "border-eco-light-grey" } ${available && "bg-eco-light-grey opacity-70 cursor-not-allowed"} shadow-sm transition ease-in hover:border-eco-black`} onClick={(e)=>setActive(e.target.innerHTML)} >2XL</button>
-						<button className={`w-14 h-8 border-2 rounded-md ${active === "3XL" ? "border-eco-black" : "border-eco-light-grey" } ${available && "bg-eco-light-grey opacity-70 cursor-not-allowed"} shadow-sm transition ease-in hover:border-eco-black`} onClick={(e)=>setActive(e.target.innerHTML)} >3XL</button>
-						<button className={`w-14 h-8 border-2 rounded-md ${active === "4XL" ? "border-eco-black" : "border-eco-light-grey" } ${available && "bg-eco-light-grey opacity-70 cursor-not-allowed"} shadow-sm transition ease-in hover:border-eco-black`} onClick={(e)=>setActive(e.target.innerHTML)} >4XL</button>
+							{data[0]?.attributes?.size?.data?.map((sizes)=>{
+								return <button key={sizes.id} className={`w-14 h-8 border-2 rounded-md ${active === sizes.size ? "border-eco-black" : "border-eco-light-grey" } ${!sizes.enabled && "bg-eco-light-grey opacity-70 cursor-not-allowed"} shadow-sm transition ease-in hover:border-eco-black`} onClick={()=>setActive(sizes?.size)} >{sizes?.size}</button>
+							})}
 					</div>
 					</div>
 					<div className="md:flex gap-2 lg:flex-col ">
@@ -84,10 +76,7 @@ const Product = () => {
 					<div className=" py-8">
 						<h2 className="text-md font-semibold">Product Details</h2>
 						<p className="text-sm py-2 leading-relaxed text-justify">
-							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi
-							sequi, eligendi ipsam voluptatum tenetur quibusdam reprehenderit
-							facere aliquam quam, quis nesciunt, voluptatibus iste id culpa
-							sint sed accusamus blanditiis pariatur.
+							{data[0]?.attributes?.description}
 						</p>
 					</div>
 				</div>
