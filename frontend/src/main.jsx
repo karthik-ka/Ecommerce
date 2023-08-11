@@ -25,7 +25,7 @@ const AppLayout = () => {
     {
       path: "/",
       element: <AppLayout />,
-      errorElement: <Error />,
+      // errorElement: <Error />,
       children: [
         {
           path: "/",
@@ -36,7 +36,7 @@ const AppLayout = () => {
           element: <Product />
         },
         {
-          path: "/products/:id",
+          path: "/products",
           element: <Products />
         },
         {

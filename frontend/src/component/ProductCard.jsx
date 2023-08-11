@@ -1,30 +1,30 @@
 /* eslint-disable react/prop-types */
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {AiTwotoneStar} from "react-icons/ai"
 
 
 
 const ProductCard = ({ products }) => {
 
-	const { attributes :{title, offer, price, oldPrice, rating, thumbnail}} = products;
+	// const { attributes :{price, oldPrice, rating, thumbnail}} = products;
 
 	return (
 		<Link to={`/product/${products.id}`} className="bg-eco-light-grey text-eco-off-black rounded-xl overflow-hidden">
 			<div className="relative">
-				<img src={thumbnail?.data?.attributes?.url} alt="no image" className="w-full h-[180px] xl:h-[280px] object-cover object-top" />
+				<img src={products?.attributes?.thumbnail?.data?.attributes?.url} alt="no image" className="w-full h-[180px] xl:h-[280px] object-cover object-top" />
 				<span className={`absolute bottom-2 right-2 flex items-center text-eco-white text-sm px-1 xl:py-1 rounded-md 
-					${rating >= 4 ? "bg-eco-green" : rating >=3 ? "bg-eco-yellow" : "bg-eco-orange" }`}><AiTwotoneStar/> {rating}
+					${products?.attributes?.rating >= 4 ? "bg-eco-green" : products?.attributes?.rating >=3 ? "bg-eco-yellow" : "bg-eco-orange" }`}><AiTwotoneStar/> {products?.attributes?.rating}
 				</span>
 			</div>
-			<h3 className="pt-4 px-4 font-medium text-s">{title}</h3>
+			<h3 className="pt-4 px-4 font-medium text-s">{products?.attributes?.title}</h3>
 			<div className="flex justify-between py-2 px-4 text-base">
 				<p className="">
-					₹{price}
+					₹{products?.attributes?.price}
 					<span className="text-sm line-through text-eco-grey pl-2">
-						₹{oldPrice}
+						₹{products?.attributes?.oldPrice}
 					</span>
 				</p>
-				<span className="text-eco-green">{offer+"% off"}</span>
+				<span className="text-eco-green">{products?.attributes?.offer+"% off"}</span>
 			</div>
 		</Link>
 	);

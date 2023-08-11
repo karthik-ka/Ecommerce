@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import {Link} from "react-router-dom"
 
@@ -44,7 +44,7 @@ const Slider = () => {
           <img src={slide3} className="md:rounded-3xl h-60 md:h-full object-cover" />
         </div>
       </Carousel>
-     <Link to="/products/1"> <button className="bg-eco-white font-medium absolute top-[28rem] px-10 py-4 text-eco-light-black hover:text-eco-black">Shop Now</button></Link>
+     <Link to={"/products"}> <button className="bg-eco-white font-medium absolute top-[28rem] px-10 py-4 text-eco-light-black hover:text-eco-black">Shop Now</button></Link>
     </div>
   );
 };

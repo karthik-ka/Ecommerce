@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 import  useFetch  from "../hooks/useFetch";
 import { useState } from "react";
-import {Shimmer_1, Shimmer_4} from "./Shimmer"
+import {Shimmer_1} from "./Shimmer"
 import {AiTwotoneStar} from "react-icons/ai"
 
 
@@ -26,7 +26,7 @@ const Collage = () => {
     {loading ? <Shimmer_1 /> :
     <div className="grid md:grid-cols-4 gap-2 max-w-[1000px] m-auto">
         <div className="row-span-2 col-span-2 md:col-span-1 md:row-span-1 bg-eco-light-grey text-eco-off-black relative">
-            <Link>
+            <Link to={`/product/${data[0].id}`}>
             <div className="relative">
                 <img src={data[0]?.attributes?.thumbnail?.data?.attributes?.url} alt="no image" className="w-full h-[180px] object-cover " />
                 <span className={`absolute bottom-2 right-3 flex items-center text-eco-white text-sm px-1 xl:py-1 rounded-md 
@@ -46,7 +46,7 @@ const Collage = () => {
             </Link>
         </div>
         <div className="bg-eco-light-grey text-eco-off-black relative">
-            <Link>
+            <Link to={`/product/${data[1].id}`}>
             <div className="relative">
                 <img src={data[1]?.attributes?.thumbnail?.data?.attributes?.url} alt="no image" className="w-full h-[180px] object-cover " />
                 <span className={`absolute bottom-2 right-3 flex items-center text-eco-white text-sm px-1 xl:py-1 rounded-md 
@@ -66,7 +66,7 @@ const Collage = () => {
             </Link>
         </div>
         <div className="md:row-span-2 md:col-span-2 bg-eco-light-grey text-eco-off-black relative">
-            <Link>
+            <Link to={`/product/${data[2].id}`}>
             <div className="relative">
                 <img src={data[2]?.attributes?.thumbnail?.data?.attributes?.url} alt="no image" className="w-full h-[180px] md:h-[460px] object-cover " />
                 <span className={`absolute bottom-2 right-3 flex items-center text-eco-white text-sm px-1 xl:py-1 rounded-md 
@@ -86,7 +86,7 @@ const Collage = () => {
             </Link>
         </div>
         <div className="bg-eco-light-grey text-eco-off-black relative">
-            <Link>
+            <Link to={`/product/${data[3].id}`}>
             <div className="relative">
             <img src={data[3]?.attributes?.thumbnail?.data?.attributes?.url} alt="no image" className="w-full h-[180px] object-cover " />
                 <span className={`absolute bottom-2 right-3 flex items-center text-eco-white text-sm px-1 xl:py-1 rounded-md 
@@ -106,7 +106,7 @@ const Collage = () => {
             </Link>
         </div>
         <div className="bg-eco-light-grey text-eco-off-black relative">
-            <Link>
+            <Link to={`/product/${data[4].id}`}>
             <div className="relative">
             <img src={data[4]?.attributes?.thumbnail?.data?.attributes?.url} alt="no image" className="w-full h-[180px] object-cover " />
                 <span className={`absolute bottom-2 right-3 flex items-center text-eco-white text-sm px-1 xl:py-1 rounded-md 

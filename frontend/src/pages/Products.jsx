@@ -1,22 +1,13 @@
 import ProductCard from "../component/ProductCard" 
 import img from "../assets/slide-1.jpg"
-const data = [
-   { id: 1, name: "Shoes", image: "../p1.png", price:"10000", rating:"4.5", prevPrice: "15000" },
-   { id: 2, name: "Shirt", image: "../p2.png", price:"10000", rating:"3.5", prevPrice: "15000" },
-   { id: 3, name: "Jeans", image: "../p3.png", price:"10000", rating:"5.0", prevPrice: "15000" },
-   { id: 4, name: "Bag", image: "../p4.png", price:"10000", rating:"1.5", prevPrice: "15000" },
-   { id: 1, name: "Shoes", image: "../p1.png", price:"10000", rating:"4.5", prevPrice: "15000" },
-   { id: 2, name: "Shirt", image: "../p2.png", price:"10000", rating:"3.5", prevPrice: "15000" },
-   { id: 3, name: "Jeans", image: "../p3.png", price:"10000", rating:"5.0", prevPrice: "15000" },
-   { id: 4, name: "Bag", image: "../p4.png", price:"10000", rating:"1.5", prevPrice: "15000" },
-   { id: 1, name: "Shoes", image: "../p1.png", price:"10000", rating:"4.5", prevPrice: "15000" },
-   { id: 2, name: "Shirt", image: "../p2.png", price:"10000", rating:"3.5", prevPrice: "15000" },
-   { id: 3, name: "Jeans", image: "../p3.png", price:"10000", rating:"5.0", prevPrice: "15000" },
-   { id: 4, name: "Bag", image: "../p4.png", price:"10000", rating:"1.5", prevPrice: "15000" },
-];
-
+import useFetch from "../hooks/useFetch"
+import {Shimmer_4} from "../component/Shimmer"
 
 const Products = () => {
+
+   const {data, loading} = useFetch(`/products?populate=*`);
+   console.log("data===",data);
+
 	return (
 		<section className="max-w-[90vw] md:max-w-[700px] lg:max-w-[900px] xl:max-w-[1280px] m-auto py-6">
 			<div className="flex justify-between">
@@ -69,7 +60,7 @@ const Products = () => {
 				<div className="right">
                <img src={img} alt="" className="h-24 lg:h-40 w-[100vw] object-cover object-top rounded-xl" />
                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 pt-3">
-                  {
+                  {loading? <Shimmer_4 /> :
                      data.map((item)=>{
                         return <ProductCard products={item} key={item.id} />
                      })

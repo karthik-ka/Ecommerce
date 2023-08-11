@@ -26,7 +26,7 @@ const Collage = () => {
         <div className="grid md:grid-cols-4 gap-2 max-w-[1000px] m-auto">
             {loading ? <Shimmer_1 /> :
                 <div className="row-span-2 col-span-2 bg-eco-light-grey text-eco-off-black relative">
-                    <Link>
+                    <Link to={`/product/${data[0].id}`}>
                     <div className="relative">
                         <img src={data[0]?.attributes?.thumbnail?.data?.attributes?.url} alt="no image" className="md:row-span-2 md:col-span-2 bg-eco-light-grey text-eco-off-black relative" />
                         <span className={`absolute bottom-2 right-3 flex items-center text-eco-white text-sm px-1 xl:py-1 rounded-md 
@@ -50,7 +50,7 @@ const Collage = () => {
             {loading ? <Shimmer_4 /> : data.slice(1).map((item)=>{
                 return(
                         <div className="bg-eco-light-grey text-eco-off-black relative" key={item.id}>
-                            <Link>
+                            <Link to={`/product/${item.id}`}>
                                 <div className="relative">
                                     <img src={item?.attributes?.thumbnail?.data?.attributes?.url} alt="no image" className="w-full h-[230px] object-cover object-top " />
                                     <span className={`absolute bottom-2 right-3 flex items-center text-eco-white text-sm px-1 xl:py-1 rounded-md 
