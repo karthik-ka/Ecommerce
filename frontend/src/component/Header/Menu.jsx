@@ -35,10 +35,10 @@ const Menu = ({ setShowCatMenu, showCatMenu }) => {
 										{subMenuData.map((item) => {
 											return (
                                     <Link to={item.url} key={item.id}>
-                                       <li className="flex w-48 h-8 m-1 p-4 bg-eco-off-white items-center justify-between">
-                                          {item.name}
-                                          <span className="">{item.doc_count}</span>
-                                       </li>
+										<li className="flex w-48 h-8 m-1 p-4 bg-eco-off-white items-center justify-between">
+											{item.name}
+											<span className="">{item.doc_count}</span>
+										</li>
                                     </Link>
 											);
 										})}

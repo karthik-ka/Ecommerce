@@ -53,8 +53,8 @@ const Navbar = () => {
          <div className="flex">
             <div className="flex relative">
                <Link to="/wishlist">
-               <FavoriteBorderIcon className="mx-4" size={42} />
-               <span className="bg-eco-red w-4 h-4 rounded-full absolute -top-1 left-8 text-[10px] font-semibold text-eco-white text-center">10</span>
+                  <FavoriteBorderIcon className="mx-4" size={42} />
+                  <span className="bg-eco-red w-4 h-4 rounded-full absolute -top-1 left-8 text-[10px] font-semibold text-eco-white text-center">10</span>
                </Link>
             </div>
             <div className="flex relative">

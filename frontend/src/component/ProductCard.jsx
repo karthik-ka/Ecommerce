@@ -16,7 +16,7 @@ const ProductCard = ({ products }) => {
 					${products?.attributes?.rating >= 4 ? "bg-eco-green" : products?.attributes?.rating >=3 ? "bg-eco-yellow" : "bg-eco-orange" }`}><AiTwotoneStar/> {products?.attributes?.rating}
 				</span>
 			</div>
-			<h3 className="pt-4 px-4 font-medium text-s">{products?.attributes?.title}</h3>
+			<h3 className="pt-4 px-4 font-medium text-s">{products?.attributes?.title.slice(0,23)}</h3>
 			<div className="flex justify-between py-2 px-4 text-base">
 				<p className="">
 					₹{products?.attributes?.price}

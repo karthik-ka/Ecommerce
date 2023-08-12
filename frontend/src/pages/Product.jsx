@@ -1,16 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import StarIcon from "@mui/icons-material/Star";
 import useFetch from "../hooks/useFetch";
 import { useParams } from "react-router-dom";
 import { Shimmer_4 } from "../component/Shimmer";
+import {AiTwotoneStar} from "react-icons/ai"
+
 
 const Product = () => {
 	const {id} = useParams();
 
 	const {data, loading} = useFetch(`/products?populate=*&sort=id:ASC&filters[$and][0][id][$eq]=${id}`)
-
-	const [img, setImg] = useState();
+	
+	const [img, setImg] = useState(); 
 	const [active, setActive] = useState("");
 
 	return (
@@ -24,13 +25,14 @@ const Product = () => {
 							return (<img src={item?.attributes?.url} key={item.id} alt="" className="rounded-xl cursor-pointer" onClick={() => setImg(item?.attributes?.url)} />);
 						})}
 					</div>
-					<div className="flex lg:order-2 lg:w-[30rem] lg:h-[35rem] rounded-xl object-cover overflow-hidden">
-							<img src={img} alt="" className="" />
+					<div className="flex lg:order-2 lg:w-[30rem] lg:h-[35rem] rounded-xl overflow-hidden">
+							<img src={img} alt="" className="object-cover" />
 					</div>
 				</div>
 
 				{/* -----------------------Detail section-------------------------- */}
 				<div className="text-eco-off-black lg:w-[28rem]">
+
 					<div className="">
 						<h1 className="text-3xl font-semibold pt-4 md:py-0">
 							{data[0]?.attributes?.title}
@@ -38,12 +40,17 @@ const Product = () => {
 						<p className="text-sm font-medium text-eco-grey my-2">
 							{data[0]?.attributes?.subtitle}
 						</p>
-						<span className="text-eco-white text-sm bg-eco-off-black px-2 py-1 rounded-lg align-middle">
-							<StarIcon />
-							{data[0]?.attributes?.rating}
-						</span>
+						<div className="flex justify-between">
+							<span className={`flex items-center text-eco-white text-sm px-1 xl:py-1 rounded-md w-max
+								${data[0]?.attributes?.rating >= 4 ? "bg-eco-green" : data[0]?.attributes?.rating >=3 ? "bg-eco-yellow" : "bg-eco-orange" }`}>
+								<AiTwotoneStar/> {data[0]?.attributes?.rating}
+							</span>
+							<span className="text-eco-green">{data[0]?.attributes?.offer+"% off"}</span>
+						</div>
 					</div>
+
 					<hr className="opacity-20 my-4" />
+
 					<div className="">
 						<h2 className="text-xl font-medium">
 							MRP : ₹{data[0]?.attributes?.price}
@@ -59,12 +66,13 @@ const Product = () => {
 							<h2>Select Size</h2>{" "}
 							<h2 className="text-eco-grey cursor-pointer">Select Guide</h2>
 						</span>
-						<div className="flex flex-wrap gap-1 my-4">
-							{data[0]?.attributes?.size?.data?.map((sizes)=>{
-								return <button key={sizes.id} className={`w-14 h-8 border-2 rounded-md ${active === sizes.size ? "border-eco-black" : "border-eco-light-grey" } ${!sizes.enabled && "bg-eco-light-grey opacity-70 cursor-not-allowed"} shadow-sm transition ease-in hover:border-eco-black`} onClick={()=>setActive(sizes?.size)} >{sizes?.size}</button>
+						<div className="flex flex-wrap gap-2 my-4">
+							{data[0]?.attributes?.size?.data?.map((sizes,idx)=>{
+								return <button key={idx} className={`w-14 h-10 border-2 rounded-md ${active === sizes.size ? "border-eco-black" : "border-eco-light-grey" } ${!sizes.enabled && "bg-eco-light-grey opacity-70 cursor-not-allowed"} shadow-sm transition ease-in hover:border-eco-black`} onClick={()=>setActive(sizes?.size)} >{sizes?.size}</button>
 							})}
+						</div>
 					</div>
-					</div>
+
 					<div className="md:flex gap-2 lg:flex-col ">
 						<button className="text-eco-white bg-eco-off-black text-md my-1 w-full h-14 rounded-full hover:bg-eco-light-black transition ease-in">
 							Add to Cart
@@ -73,6 +81,7 @@ const Product = () => {
 							Whishilst <FavoriteBorderIcon />{" "}
 						</button>
 					</div>
+					
 					<div className=" py-8">
 						<h2 className="text-md font-semibold">Product Details</h2>
 						<p className="text-sm py-2 leading-relaxed text-justify">
@@ -80,6 +89,7 @@ const Product = () => {
 						</p>
 					</div>
 				</div>
+
 			</div>
 		</section>
 	);
