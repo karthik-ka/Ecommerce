@@ -36,7 +36,7 @@ const AppLayout = () => {
           element: <Product />
         },
         {
-          path: "/products",
+          path: "/products/:id",
           element: <Products />
         },
         {
