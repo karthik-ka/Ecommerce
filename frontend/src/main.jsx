@@ -1,5 +1,6 @@
 import ReactDOM  from "react-dom/client";
 import { createBrowserRouter,  Outlet, RouterProvider } from "react-router-dom";
+import {Provider} from "react-redux"
 import "./index.css"
 import Navbar from "./component/Header/Navbar";
 import Home from "./pages/Home";
@@ -9,15 +10,16 @@ import Footer from "./component/Footer";
 import Error from "./component/Error";
 import Cart from "./pages/Cart";
 import Wishlist from "./pages/wishlist";
+import store from "./utils/store";
 
 
 const AppLayout = () => { 
   return (
-    <>
+    <Provider store={store}>
       <Navbar />
       <Outlet />
       <Footer />
-    </>
+    </Provider>
   );
 }
 

@@ -1,5 +1,7 @@
-import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import { useState } from 'react';
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearCart } from '../utils/cartSlice';
 
 const data = [
    { id: 1, title: "Nike jordan 5xl", image: "../p1.png", price: "10000"}
@@ -8,6 +10,13 @@ const data = [
 const Cart = () => {
 
    const [count, setCount] = useState(0);
+
+   const cartItems = useSelector((store)=> store.cart.items) 
+
+   const dispatch = useDispatch();
+   const handleClearCart = () =>[
+      dispatch(clearCart())
+   ]
 
    const handleInc = () =>{
       setCount(count+1);
@@ -25,7 +34,7 @@ const Cart = () => {
          <div className='md:px-6 flex-1'>
             <div className='flex pb-6 justify-between'>
                <h1 className='font-semibold text-2xl'>Cart</h1>
-               <span className='text-sm font-semibold text-eco-red cursor-pointer'><DeleteOutlineOutlinedIcon fontSize='10'/>Clear cart</span>
+               <span className='text-sm font-semibold text-eco-red cursor-pointer' onClick={()=>handleClearCart()}><DeleteOutlineOutlinedIcon fontSize='10' />Clear cart</span>
             </div>
             <table className='w-full'>
                <tr className='text-eco-grey border-b-2 border-eco-light-grey'>
@@ -34,12 +43,12 @@ const Cart = () => {
                   <th>PRICE</th>
                </tr>
 
-               {data.map((item)=>{
+               {cartItems.map((item)=>{
                   return (
                      <tr key={item.id} className='text-center text-eco-light-black border-b-2 border-eco-light-grey'>
                         <td className='flex flex-col md:flex-row gap-3 py-4'> 
-                           <img src={item.image} alt="" className='w-24 h-24 object-cover rounded-lg' />
-                           <h2 className='font-semibold hidden md:block'>{item.title}</h2>
+                           <img src={item?.attributes?.thumbnail?.data?.attributes?.url} alt="" className='w-24 h-24 object-cover rounded-lg' />
+                           <h2 className='font-semibold hidden md:block'>{item?.attributes?.title}</h2>
                         </td>
                         <td >
                            <button className='px-3 py-1 rounded-sm mx-1 bg-eco-light-grey' onClick={handleDec}>-</button>
@@ -48,7 +57,7 @@ const Cart = () => {
                            <p className='text-sm font-semibold my-2 text-eco-red cursor-pointer'><DeleteOutlineOutlinedIcon fontSize='10'/>Remove</p>
                         </td>
                         <td>
-                           <h2 className='font-medium'>₹{item.price}</h2>
+                           <h2 className='font-medium'>₹{item?.attributes?.price}</h2>
                         </td>
                      </tr>
                   )
@@ -58,7 +67,6 @@ const Cart = () => {
          </div>
 
          {/* =================================right section======================================= */}
-
          <div className='lg:w-80 h-max py-4 border border-eco-light-grey shadow-lg rounded-xl'>
             <div className='flex justify-between px-4 text-sm text-eco-grey font-medium'>
                <h2>Subtotal</h2>

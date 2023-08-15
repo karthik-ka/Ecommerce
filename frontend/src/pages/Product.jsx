@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import { useState } from "react";
 import useFetch from "../hooks/useFetch";
+import {useDispatch} from "react-redux"
+import {addItems} from "../utils/cartSlice";
 import { useParams } from "react-router-dom";
 import { Shimmer_4 } from "../component/Shimmer";
+
 import {AiTwotoneStar} from "react-icons/ai"
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
 
 const Product = () => {
@@ -13,6 +16,11 @@ const Product = () => {
 	
 	const [img, setImg] = useState(); 
 	const [active, setActive] = useState("");
+	
+	const dispatch = useDispatch();
+	const addProductItem = (item) => {
+		dispatch(addItems(item))
+	}
 
 	return (
 		<section className="max-w-[90vw] md:max-w-[700px] lg:max-w-[900px] xl:max-w-[1200px] m-auto ">
@@ -74,7 +82,7 @@ const Product = () => {
 					</div>
 
 					<div className="md:flex gap-2 lg:flex-col ">
-						<button className="text-eco-white bg-eco-off-black text-md my-1 w-full h-14 rounded-full hover:bg-eco-light-black transition ease-in">
+						<button className="text-eco-white bg-eco-off-black text-md my-1 w-full h-14 rounded-full hover:bg-eco-light-black transition ease-in" onClick={()=>addProductItem(data[0])}>
 							Add to Cart
 						</button>
 						<button className="bg-eco-white border text-md my-1 w-full h-14 rounded-full hover:text-eco-grey transition ease-in">

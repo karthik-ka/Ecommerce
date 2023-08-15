@@ -1,16 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux"
+
 import logo from "../../assets/logo.png";
 import Menu from "./Menu";
 import MobileMenu from "./MobileMenu";
 
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import {useEffect} from "react"
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-import { Link } from "react-router-dom";
+import store from "../../utils/store";
 
 const Navbar = () => {
    const [mobileMenu, setMobileMenu] = useState(false);
@@ -39,6 +41,7 @@ const Navbar = () => {
       };
    }, [lastScrollY]);
 
+   const cartItems = useSelector(store=> store.cart.items);
 
    return (
       <div className={`w-full z-20 sticky top-0 transition-transform duration-300 ${show} bg-eco-white shadow-sm`}>
@@ -60,7 +63,7 @@ const Navbar = () => {
             <div className="flex relative">
                <Link to="/cart">
                   <ShoppingCartIcon size={43} />
-                  <span className="bg-eco-red w-4 h-4 rounded-full absolute -top-1 left-4 text-[10px] font-semibold text-eco-white text-center">10</span>
+                  <span className="bg-eco-red w-4 h-4 rounded-full absolute -top-1 left-4 text-[10px] font-semibold text-eco-white text-center">{cartItems.length}</span>
                </Link>
             </div>
             <div className="ml-4 md:hidden">
