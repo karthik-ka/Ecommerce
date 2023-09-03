@@ -42,6 +42,7 @@ const Navbar = () => {
    }, [lastScrollY]);
 
    const cartItems = useSelector(store=> store.cart.items);
+   const listItems = useSelector(store=> store.wishlist.items)
 
    return (
       <div className={`w-full z-20 sticky top-0 transition-transform duration-300 ${show} bg-eco-white shadow-sm`}>
@@ -57,7 +58,7 @@ const Navbar = () => {
             <div className="flex relative">
                <Link to="/wishlist">
                   <FavoriteBorderIcon className="mx-4" size={42} />
-                  <span className="bg-eco-red w-4 h-4 rounded-full absolute -top-1 left-8 text-[10px] font-semibold text-eco-white text-center">10</span>
+                  <span className="bg-eco-red w-4 h-4 rounded-full absolute -top-1 left-8 text-[10px] font-semibold text-eco-white text-center">{listItems.length}</span>
                </Link>
             </div>
             <div className="flex relative">

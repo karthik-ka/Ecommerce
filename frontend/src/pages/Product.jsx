@@ -2,7 +2,9 @@ import { useState } from "react";
 import useFetch from "../hooks/useFetch";
 import {useDispatch} from "react-redux"
 import {addItems} from "../utils/cartSlice";
+import { addListItem } from "../utils/listSlice";
 import { useParams } from "react-router-dom";
+
 import { Shimmer_4 } from "../component/Shimmer";
 
 import {AiTwotoneStar} from "react-icons/ai"
@@ -14,12 +16,15 @@ const Product = () => {
 
 	const {data, loading} = useFetch(`/products?populate=*&sort=id:ASC&filters[$and][0][id][$eq]=${id}`)
 	
-	const [img, setImg] = useState(); 
+	const [img, setImg] = useState(null); 
 	const [active, setActive] = useState("");
 	
 	const dispatch = useDispatch();
 	const addProductItem = (item) => {
 		dispatch(addItems(item))
+	}
+	const addList = (item) => {
+		dispatch(addListItem(item))
 	}
 
 	return (
@@ -27,21 +32,23 @@ const Product = () => {
 			<div className="lg:flex py-4 lg:py-16 justify-around">
 
 				{/* -----------------------Image section-------------------------- */}
-				<div className="flex flex-col lg:flex-row">
-					<div className="flex gap-2 w-20 order-2 lg:flex-col my-2 lg:my-0 lg:mx-2">
-						{loading ? <Shimmer_4 /> :data[0]?.attributes?.image?.data?.map((item)=>{
-							return (<img src={item?.attributes?.url} key={item.id} alt="" className="rounded-xl cursor-pointer" onClick={() => setImg(item?.attributes?.url)} />);
-						})}
+				<div className="flex flex-col lg:flex-row overflow-hidden">
+					<div className="overflow-x-scroll order-2">
+						<div className="flex gap-2 w-20 lg:flex-col my-2 lg:my-0 lg:mx-2">
+							{loading ? <Shimmer_4 /> :data[0]?.attributes?.image?.data?.map((item)=>{
+								return (<img src={item?.attributes?.url} key={item.id} alt="" className="rounded-xl cursor-pointer" onClick={() => setImg(item?.attributes?.url)} />);
+							})}
+						</div>
 					</div>
-					<div className="flex lg:order-2 lg:w-[30rem] lg:h-[35rem] rounded-xl overflow-hidden">
-							<img src={img} alt="" className="object-cover" />
+					<div className="flex lg:order-2 w-full h-[28rem] lg:w-[20rem] lg:h-[30rem] xl:w-[30rem] xl:h-[35rem] rounded-xl overflow-hidden">
+						<img src={img === null ? data[0]?.attributes?.image?.data[0]?.attributes?.url : img} alt="" className="object-cover w-full" />
 					</div>
 				</div>
 
 				{/* -----------------------Detail section-------------------------- */}
 				<div className="text-eco-off-black lg:w-[28rem]">
-
-					<div className="">
+					{/* ======= Titel | subtitle | rating | offer ====== */}
+					<div>
 						<h1 className="text-3xl font-semibold pt-4 md:py-0">
 							{data[0]?.attributes?.title}
 						</h1>
@@ -56,19 +63,18 @@ const Product = () => {
 							<span className="text-eco-green">{data[0]?.attributes?.offer+"% off"}</span>
 						</div>
 					</div>
-
 					<hr className="opacity-20 my-4" />
-
+					{/* ======= price | oldprice ====== */}
 					<div className="">
 						<h2 className="text-xl font-medium">
 							MRP : ₹{data[0]?.attributes?.price}
-							<span className="text-base line-through">₹{data[0]?.attributes?.oldPrice}</span>
+							<span className="text-base line-through pl-2">₹{data[0]?.attributes?.oldPrice}</span>
 						</h2>
 						<span className="text-eco-grey text-sm">
 							incl. of taxes <br /> (Also includes all applicable duties)
 						</span>
 					</div>
-
+					{/* ======= size ====== */}
 					<div className="mt-8">
 						<span className="flex text-md font-semibold justify-between">
 							<h2>Select Size</h2>{" "}
@@ -80,16 +86,16 @@ const Product = () => {
 							})}
 						</div>
 					</div>
-
+					{/* ======= Buttons ====== */}
 					<div className="md:flex gap-2 lg:flex-col ">
 						<button className="text-eco-white bg-eco-off-black text-md my-1 w-full h-14 rounded-full hover:bg-eco-light-black transition ease-in" onClick={()=>addProductItem(data[0])}>
 							Add to Cart
 						</button>
-						<button className="bg-eco-white border text-md my-1 w-full h-14 rounded-full hover:text-eco-grey transition ease-in">
+						<button className="bg-eco-white border text-md my-1 w-full h-14 rounded-full hover:text-eco-grey transition ease-in" onClick={()=>addList(data[0])}>
 							Whishilst <FavoriteBorderIcon />{" "}
 						</button>
 					</div>
-					
+					{/* ======= discription ====== */}
 					<div className=" py-8">
 						<h2 className="text-md font-semibold">Product Details</h2>
 						<p className="text-sm py-2 leading-relaxed text-justify">

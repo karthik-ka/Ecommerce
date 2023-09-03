@@ -6,8 +6,6 @@ import {AiTwotoneStar} from "react-icons/ai"
 
 const ProductCard = ({ products }) => {
 
-	// const { attributes :{price, oldPrice, rating, thumbnail}} = products;
-
 	return (
 		<Link to={`/product/${products.id}`} className="bg-eco-light-grey text-eco-off-black rounded-xl overflow-hidden">
 			<div className="relative">

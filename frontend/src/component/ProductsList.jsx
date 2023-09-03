@@ -8,11 +8,9 @@ import { Shimmer_4 } from "./Shimmer";
 
 const ProductsList = ({categId, subCategId, priceRange}) => {
 
-	console.log("subcat==",subCategId);
-
 	const {data, loading} = useFetch(`/products?populate=*&filters[categories][id][$eq]=${categId}&filters[sub_categories][id][$eq]=${subCategId} ${priceRange === "H-L" ? `&sort[0]=price:desc` : `&sort[0]=price:asc` }`)
 	return (
-		<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 pt-3">
+		<div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 pt-3">
 			{ loading ? <Shimmer_4 /> :
 			data.map((items)=>{
 					return(
@@ -31,7 +29,7 @@ const ProductsList = ({categId, subCategId, priceRange}) => {
 										₹{items?.attributes?.oldPrice}
 									</span>
 								</p>
-								<span className="text-eco-green">{items?.attributes?.offer+"% off"}</span>
+								<span className="text-eco-green text-xs md:text-sm">{items?.attributes?.offer+"% off"}</span>
 							</div>
 						</Link>
 					)

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import { useDispatch, useSelector } from 'react-redux';
-import { clearCart } from '../utils/cartSlice';
+import { clearCart, removeItem } from '../utils/cartSlice';
 
 const data = [
    { id: 1, title: "Nike jordan 5xl", image: "../p1.png", price: "10000"}
@@ -14,9 +14,12 @@ const Cart = () => {
    const cartItems = useSelector((store)=> store.cart.items) 
 
    const dispatch = useDispatch();
-   const handleClearCart = () =>[
+   const handleClearCart = () =>{
       dispatch(clearCart())
-   ]
+   }
+   const handleRemoveItems = (id) =>{
+      dispatch(removeItem(id))
+   }
 
    const handleInc = () =>{
       setCount(count+1);
@@ -34,7 +37,7 @@ const Cart = () => {
          <div className='md:px-6 flex-1'>
             <div className='flex pb-6 justify-between'>
                <h1 className='font-semibold text-2xl'>Cart</h1>
-               <span className='text-sm font-semibold text-eco-red cursor-pointer' onClick={()=>handleClearCart()}><DeleteOutlineOutlinedIcon fontSize='10' />Clear cart</span>
+               <span className='text-sm font-semibold transition ease-in hover:text-eco-red cursor-pointer' onClick={()=>handleClearCart()}><DeleteOutlineOutlinedIcon fontSize='10' />Clear cart</span>
             </div>
             <table className='w-full'>
                <tr className='text-eco-grey border-b-2 border-eco-light-grey'>
@@ -43,18 +46,20 @@ const Cart = () => {
                   <th>PRICE</th>
                </tr>
 
-               {cartItems.map((item)=>{
+               {cartItems.map((item, id)=>{
                   return (
-                     <tr key={item.id} className='text-center text-eco-light-black border-b-2 border-eco-light-grey'>
+                     <tr key={id} className='text-center text-eco-light-black border-b-2 border-eco-light-grey'>
                         <td className='flex flex-col md:flex-row gap-3 py-4'> 
                            <img src={item?.attributes?.thumbnail?.data?.attributes?.url} alt="" className='w-24 h-24 object-cover rounded-lg' />
-                           <h2 className='font-semibold hidden md:block'>{item?.attributes?.title}</h2>
+                           <h2 className='font-semibold hidden md:block text-left'>{item?.attributes?.title}</h2>
                         </td>
                         <td >
-                           <button className='px-3 py-1 rounded-sm mx-1 bg-eco-light-grey' onClick={handleDec}>-</button>
-                           <span className='font-medium'>{count}</span>
-                           <button className='px-3 py-1 rounded-sm mx-1 bg-eco-light-grey' onClick={handleInc}>+</button>
-                           <p className='text-sm font-semibold my-2 text-eco-red cursor-pointer'><DeleteOutlineOutlinedIcon fontSize='10'/>Remove</p>
+                           <div className="md:flex xl:block items-center">
+                              <button className='px-3 py-1 rounded-sm mx-1 bg-eco-light-grey' onClick={handleDec}>-</button>
+                              <span className='font-medium'>{count}</span>
+                              <button className='px-3 py-1 rounded-sm mx-1 bg-eco-light-grey' onClick={handleInc}>+</button>
+                           </div>
+                           <button className='text-sm font-semibold my-2 transition ease-in hover:text-eco-red' onClick={()=>handleRemoveItems(id)}><DeleteOutlineOutlinedIcon fontSize='10'/>Remove</button>
                         </td>
                         <td>
                            <h2 className='font-medium'>₹{item?.attributes?.price}</h2>

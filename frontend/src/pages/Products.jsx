@@ -13,12 +13,6 @@ const Products = () => {
    const [subCategoryId, setSubCategoryId] = useState(2);
    const [priceRange, setPriceRange] = useState("");
 
-   // const CategoryChange = (e) =>{
-   //    const value = e.target.value;
-   //    const isChecked = e.target.checked;
-   //    setCategoryId(isChecked ? [...categoryId, value] : categoryId.filter((item)=> item !== value))
-   //    console.log("catId===",categoryId);
-   // }
    const subCategoryChange = (e) =>{
       const value = e.target.value;
       setSubCategoryId(value )
@@ -28,20 +22,8 @@ const Products = () => {
 		<section className="max-w-[90vw] md:max-w-[700px] lg:max-w-[900px] xl:max-w-[1280px] m-auto py-6">
 			<div className="flex justify-between">
 				{/* ======================Left section========================= */}
-				<div className="hidden md:block pl-2">
-               {/* <div className=" pb-8 pr-24 ">
-                     <h1 className="font-semibold py-2">Gender</h1>
-                     {data[0]?.attributes?.categories?.data?.map((item)=>{
-                     return(
-                        <div className="flex items-center" key={item.id}>
-                           <input type="radio" value={item.id}  onChange={CategoryChange}/>
-                           <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{item?.attributes?.title.charAt(0).toUpperCase() + item?.attributes?.title.slice(1)}</label>
-                        </div>
-                        )
-                     })}
-               </div> */}
-
-               <div className=" pb-8 pr-24">
+				<div className="hidden md:block pl-2 pr-24">
+               <div className=" pb-8">
                   <h1 className="font-semibold py-2">Category</h1>
                   {data?.map((item)=>{
                         return(
@@ -67,7 +49,7 @@ const Products = () => {
 				</div>
 				{/* =====================Right section========================== */}
 				<div className="right">
-               <img src={img} alt="" className="h-24 lg:h-40 w-[100vw] object-cover object-top rounded-xl" />
+               <img src={id == 1 ? "https://images.unsplash.com/photo-1574177556859-1362f72ed6f9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" : img} alt="category thumbnail" className="h-24 lg:h-40 w-[100vw] object-cover object-top rounded-xl" />
                <ProductsList categId={id} subCategId={subCategoryId} priceRange={priceRange}/>
             </div>
 			</div>
