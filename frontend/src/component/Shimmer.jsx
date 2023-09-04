@@ -15,3 +15,35 @@ export const Shimmer_1 = () => {
     </>
   );
 };
+
+
+export const Procuct_skelton = ({card}) => {
+	return (
+		<>
+			{
+				Array(card).fill("").map((e, index) => (
+					<div key={index} className="bg-eco-light-grey rounded-xl w-full h-56 lg:h-64 xl:h-72 animate-pulse animate-infinite"></div>
+				))
+			}
+		</>
+	);
+};
+
+export const Img_Skelton = () => {
+	return (
+		<>
+			{
+				Array(5).fill("").map((e, index) => (
+				<div key={index} className="bg-eco-light-grey rounded-xl w-full h-[90px] animate-pulse animate-infinite"></div>
+				))
+			}
+		</>
+	)
+}
+export const Thumb_Skelton = () => {
+	return (
+		<>
+			<div className="bg-eco-light-grey rounded-xl w-full animate-pulse animate-infinite"></div>
+		</>
+	);
+};

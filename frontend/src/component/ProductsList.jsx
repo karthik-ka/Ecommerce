@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 import {AiTwotoneStar} from "react-icons/ai"
 import useFetch from "../hooks/useFetch";
-import { Shimmer_4 } from "./Shimmer";
+import { Procuct_skelton } from "./Shimmer";
 
 
 
@@ -11,7 +11,7 @@ const ProductsList = ({categId, subCategId, priceRange}) => {
 	const {data, loading} = useFetch(`/products?populate=*&filters[categories][id][$eq]=${categId}&filters[sub_categories][id][$eq]=${subCategId} ${priceRange === "H-L" ? `&sort[0]=price:desc` : `&sort[0]=price:asc` }`)
 	return (
 		<div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 pt-3">
-			{ loading ? <Shimmer_4 /> :
+			{ loading ? <Procuct_skelton card={8} /> :
 			data.map((items)=>{
 					return(
 						<Link to={`/product/${items.id}`} key={items.id} className="bg-eco-light-grey text-eco-off-black rounded-xl overflow-hidden">

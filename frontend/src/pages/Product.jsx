@@ -5,7 +5,9 @@ import {addItems} from "../utils/cartSlice";
 import { addListItem } from "../utils/listSlice";
 import { useParams } from "react-router-dom";
 
-import { Shimmer_4 } from "../component/Shimmer";
+import { Img_Skelton, Thumb_Skelton } from "../component/Shimmer";
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 import {AiTwotoneStar} from "react-icons/ai"
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
@@ -33,15 +35,16 @@ const Product = () => {
 
 				{/* -----------------------Image section-------------------------- */}
 				<div className="flex flex-col lg:flex-row overflow-hidden">
-					<div className="overflow-x-scroll order-2">
+					<div className="overflow-x-scroll order-2 scrollbar-hide">
 						<div className="flex gap-2 w-20 lg:flex-col my-2 lg:my-0 lg:mx-2">
-							{loading ? <Shimmer_4 /> :data[0]?.attributes?.image?.data?.map((item)=>{
+							{loading ? <Img_Skelton /> :data[0]?.attributes?.image?.data?.map((item)=>{
 								return (<img src={item?.attributes?.url} key={item.id} alt="" className="rounded-xl cursor-pointer" onClick={() => setImg(item?.attributes?.url)} />);
 							})}
 						</div>
 					</div>
 					<div className="flex lg:order-2 w-full h-[28rem] lg:w-[20rem] lg:h-[30rem] xl:w-[30rem] xl:h-[35rem] rounded-xl overflow-hidden">
-						<img src={img === null ? data[0]?.attributes?.image?.data[0]?.attributes?.url : img} alt="" className="object-cover w-full" />
+						{loading ? <Thumb_Skelton/> :
+						<img src={img === null ? data[0]?.attributes?.image?.data[0]?.attributes?.url : img} alt="" className="object-cover w-full" />}
 					</div>
 				</div>
 
@@ -50,10 +53,10 @@ const Product = () => {
 					{/* ======= Titel | subtitle | rating | offer ====== */}
 					<div>
 						<h1 className="text-3xl font-semibold pt-4 md:py-0">
-							{data[0]?.attributes?.title}
+							{data[0]?.attributes?.title || <Skeleton count={2} />}
 						</h1>
 						<p className="text-sm font-medium text-eco-grey my-2">
-							{data[0]?.attributes?.subtitle}
+							{data[0]?.attributes?.subtitle || <Skeleton height={12}/> }
 						</p>
 						<div className="flex justify-between">
 							<span className={`flex items-center text-eco-white text-sm px-1 xl:py-1 rounded-md w-max
@@ -67,7 +70,7 @@ const Product = () => {
 					{/* ======= price | oldprice ====== */}
 					<div className="">
 						<h2 className="text-xl font-medium">
-							MRP : ₹{data[0]?.attributes?.price}
+							MRP : ₹{data[0]?.attributes?.price || <Skeleton count={2}/> }
 							<span className="text-base line-through pl-2">₹{data[0]?.attributes?.oldPrice}</span>
 						</h2>
 						<span className="text-eco-grey text-sm">
@@ -99,7 +102,7 @@ const Product = () => {
 					<div className=" py-8">
 						<h2 className="text-md font-semibold">Product Details</h2>
 						<p className="text-sm py-2 leading-relaxed text-justify">
-							{data[0]?.attributes?.description}
+							{data[0]?.attributes?.description || <Skeleton count={6} height={10}/> }
 						</p>
 					</div>
 				</div>
