@@ -2,10 +2,10 @@ import { useState } from 'react';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearCart, removeItem } from '../utils/cartSlice';
+import {Link} from "react-router-dom"
 
 const Cart = () => {
 
-   const [count, setCount] = useState(0);
 
    const cartItems = useSelector((store)=> store.cart.items) 
 
@@ -24,6 +24,18 @@ const Cart = () => {
 
    return (
    <section className="max-w-[90vw] md:max-w-[700px] lg:max-w-[900px] xl:max-w-[1280px] m-auto py-16">
+      {cartItems <=0 ? 
+      <div className=''>
+         <img src="https://cdni.iconscout.com/illustration/premium/thumb/empty-cart-4150967-3437888.png" alt="" className='m-auto w-[50%] ' />
+         <div className="text-center">
+            <h1 className='text-lg font-semibold mb-4'>Your cart is Empty</h1>
+            <p className='text-sm '>Looks like you have not added anything in your cart. <br /> Go ahead and explore top categories.</p>
+            <Link to="/">
+               <button className='text-sm text-eco-white bg-eco-light-black px-6 py-3 rounded-full mt-4'>Continue Shopping</button>
+            </Link>
+         </div>
+      </div>
+      :
       <div className='flex flex-col lg:flex-row gap-4 justify-between'>
 
          {/* =================================left section======================================= */}
@@ -38,7 +50,6 @@ const Cart = () => {
                   <th>PRODUCTS</th>
                   <th>PRICE</th>
                </div>
-
                {cartItems.map((item, id)=>{
                   return (
                      <div key={id} className='flex text-eco-light-black border-b-2 border-eco-light-grey justify-between items-center'>
@@ -52,7 +63,7 @@ const Cart = () => {
                                        <span className='text-xs font-semibold text-eco-grey'>Size</span>
                                        <select name="" id="" className='text-xs font-semibold text-eco-grey bg-eco-light-grey px-1 py-1 ml-1 outline-none'>
                                           {item?.attributes?.size?.data?.map((item, id) =>(
-                                             <option value="" key={id}>{item?.size}</option>
+                                             <option key={id} value={item.size} selected={item.seletedSize === item.size}>{item?.size}</option>
                                           ))}
                                        </select>
                                     </div>
@@ -75,8 +86,9 @@ const Cart = () => {
                               </div>
                            </td>
                         </div>
-                        <td>
+                        <td className='text-center'>
                            <h2 className='font-semibold text-sm'>₹{item?.attributes?.price}</h2>
+                           <span className='text-sm font-semibold transition ease-in text-eco-grey hover:text-eco-red cursor-pointer' onClick={()=>handleRemoveItems()}><DeleteOutlineOutlinedIcon fontSize='10' />Remove</span>
                         </td>
                      </div>
                   )
@@ -103,6 +115,8 @@ const Cart = () => {
                <div className='py-3 w-72 m-auto text-center bg-eco-off-black text-eco-white rounded-lg cursor-pointer hover:bg-eco-black transition ease-in'>Checkout</div>
          </div>
       </div>
+      
+   }
    </section>
    )
 }
