@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { clearCart, removeItem } from '../utils/cartSlice';
 import {Link} from "react-router-dom"
 import {loadStripe} from '@stripe/stripe-js';
-import { makeRequest } from '../utils/makeRequest';
+import { makePaymentRequest } from '../utils/makeRequest';
 import { useState } from 'react';
 
 const Cart = () => {
@@ -26,12 +26,11 @@ const Cart = () => {
    }
 
    const stripePromise = loadStripe(import.meta.env.VITE_REACT_APP_STRIPE_PUBLISHABLE_KEY);
-
    const handlePayment = async () => {
       try {
          setLoading(true);
          const stripe = await stripePromise;
-         const res = await makeRequest.post("/orders",{
+         const res = await makePaymentRequest.post("/orders",{
                products: cartItems,
             });
             await stripe.redirectToCheckout({
@@ -133,9 +132,9 @@ const Cart = () => {
                <h2>Grand total</h2>
                <p className='font-semibold'>₹{subTotal()}</p>
             </div>
-               <div className='flex text-center justify-center py-3 w-72 m-auto bg-eco-off-black text-eco-white rounded-lg cursor-pointer hover:bg-eco-black transition ease-in active:scale-95'
-               onClick={handlePayment}
-               >Checkout {loading && <img src="/spinner.svg" className='ml-3 w-6'/> }</div>
+                  <button type='submit' className='flex text-center justify-center py-3 w-72 m-auto bg-eco-off-black text-eco-white rounded-lg cursor-pointer hover:bg-eco-black transition ease-in active:scale-95'
+                     onClick={handlePayment}>Checkout {loading && <img src="/spinner.svg" className='ml-3 w-6'/> }
+                  </button>
          </div>
       </div>
       

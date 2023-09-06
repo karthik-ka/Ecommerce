@@ -11,6 +11,8 @@ import Error from "./component/Error";
 import Cart from "./pages/Cart";
 import Wishlist from "./pages/wishlist";
 import store from "./utils/store";
+import Success from "./pages/Success";
+import Failed from "./pages/Failed";
 
 
 const AppLayout = () => { 
@@ -27,7 +29,7 @@ const AppLayout = () => {
     {
       path: "/",
       element: <AppLayout />,
-      // errorElement: <Error />,
+      errorElement: <Error />,
       children: [
         {
           path: "/",
@@ -48,6 +50,14 @@ const AppLayout = () => {
         {
           path: "/wishlist",
           element: <Wishlist />
+        },
+        {
+          path: "/success",
+          element: <Success />
+        },
+        {
+          path: "/failed",
+          element: <Failed />
         },
       ],
     },

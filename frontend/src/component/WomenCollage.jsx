@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 import  useFetch  from "../hooks/useFetch";
 import { useState } from "react";
-import {Shimmer_1} from "./Shimmer"
+import {Collection_skelton, Shimmer_1} from "./Shimmer"
 import {AiTwotoneStar} from "react-icons/ai"
 
 
@@ -22,8 +22,8 @@ const Collage = () => {
             <button type="button" onClick={()=>setCategory("shoes")} 
             className={`mx-2 mb-6 px-3 py-1 rounded-md text-sm ${category ==="shoes" && "bg-eco-off-black text-eco-white"} hover:bg-eco-off-black hover:text-eco-white transition ease-in`}>Shoes</button>
         </div>
-    {loading ? <Shimmer_1 /> :
     <div className="grid md:grid-cols-4 gap-2 max-w-[1000px] m-auto">
+    {loading ? <Collection_skelton /> :
         <div className="row-span-2 col-span-2 md:col-span-1 md:row-span-1 bg-eco-light-grey text-eco-off-black relative">
             <Link to={`/product/${data[0].id}`}>
             <div className="relative">
@@ -44,6 +44,8 @@ const Collage = () => {
                 </div>
             </Link>
         </div>
+    }
+    {loading ? <Collection_skelton /> :
         <div className="bg-eco-light-grey text-eco-off-black relative">
             <Link to={`/product/${data[1].id}`}>
             <div className="relative">
@@ -64,6 +66,8 @@ const Collage = () => {
                 </div>
             </Link>
         </div>
+    } 
+    {loading ? <Shimmer_1 /> :
         <div className="md:row-span-2 md:col-span-2 bg-eco-light-grey text-eco-off-black relative">
             <Link to={`/product/${data[2].id}`}>
             <div className="relative">
@@ -84,6 +88,8 @@ const Collage = () => {
                 </div>
             </Link>
         </div>
+    }    
+    {loading ? <Collection_skelton /> :
         <div className="bg-eco-light-grey text-eco-off-black relative">
             <Link to={`/product/${data[3].id}`}>
             <div className="relative">
@@ -104,6 +110,8 @@ const Collage = () => {
                 </div>
             </Link>
         </div>
+    }
+    {loading ? <Collection_skelton /> :   
         <div className="bg-eco-light-grey text-eco-off-black relative">
             <Link to={`/product/${data[4].id}`}>
             <div className="relative">
@@ -124,8 +132,8 @@ const Collage = () => {
                 </div>
             </Link>
         </div>
+    }  
     </div>
-    }
     </>
   )
 }
