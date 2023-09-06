@@ -11,6 +11,8 @@ import 'react-loading-skeleton/dist/skeleton.css'
 
 import {AiTwotoneStar} from "react-icons/ai"
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Product = () => {
@@ -20,17 +22,33 @@ const Product = () => {
 	
 	const [img, setImg] = useState(null); 
 	const [active, setActive] = useState("");
+	const [seletedSize, setSelectedSize] = useState();
+	const [showError, setShowError] = useState(false);
+
+	const notify = () => toast.success('Successfully added to cart', {
+		position: "bottom-right",
+		autoClose: 5000,
+		hideProgressBar: false,
+		closeOnClick: true,
+		pauseOnHover: true,
+		draggable: true,
+		progress: undefined,
+		theme: "dark",
+	});
 	
 	const dispatch = useDispatch();
 	const addProductItem = (item) => {
 		dispatch(addItems(item))
+		notify();
 	}
 	const addList = (item) => {
 		dispatch(addListItem(item))
 	}
 
 	return (
+		
 		<section className="max-w-[90vw] md:max-w-[700px] lg:max-w-[900px] xl:max-w-[1200px] m-auto ">
+			<ToastContainer />
 			<div className="lg:flex py-4 lg:py-16 justify-around">
 
 				{/* -----------------------Image section-------------------------- */}
@@ -85,16 +103,28 @@ const Product = () => {
 						</span>
 						<div className="flex flex-wrap gap-2 my-4">
 							{data[0]?.attributes?.size?.data?.map((sizes,idx)=>{
-								return <button key={idx} className={`w-14 h-10 border-2 rounded-md ${active === sizes.size ? "border-eco-black" : "border-eco-light-grey" } ${!sizes.enabled && "bg-eco-light-grey opacity-70 cursor-not-allowed"} shadow-sm transition ease-in hover:border-eco-black`} onClick={()=>setActive(sizes?.size)} >{sizes?.size}</button>
+								return <button key={idx} className={`w-14 h-10 border-2 rounded-md ${active === sizes.size ? "border-eco-black" : "border-eco-light-grey" } ${!sizes.enabled && "bg-eco-light-grey opacity-70 cursor-not-allowed"} shadow-sm transition ease-in hover:border-eco-black`} 
+								onClick={()=>{setActive(sizes?.size), setSelectedSize(sizes?.size), setShowError(false)}} >{sizes?.size}</button>
 							})}
 						</div>
+						{showError && <span id="sizeGrid" className="text-eco-red text-sm">Size selection is required</span>}
 					</div>
 					{/* ======= Buttons ====== */}
 					<div className="md:flex gap-2 lg:flex-col ">
-						<button className="text-eco-white bg-eco-off-black text-md my-1 w-full h-14 rounded-full hover:bg-eco-light-black transition ease-in" onClick={()=>addProductItem(data[0])}>
+						<button className="text-eco-white bg-eco-off-black text-md my-1 w-full h-14 rounded-full hover:bg-eco-light-black transition ease-in active:scale-95" 
+						onClick={()=>{
+							if(seletedSize){
+								addProductItem({...data[0],seletedSize,oneQuantityPrice: data[0]?.attributes?.price})
+							}else{
+								setShowError(true);
+								document.getElementById("sizeGrid").scrollIntoView({block: "center", behaviour: "smooth"})
+							}
+						}}
+						>
 							Add to Cart
 						</button>
-						<button className="bg-eco-white border text-md my-1 w-full h-14 rounded-full hover:text-eco-grey transition ease-in" onClick={()=>addList(data[0])}>
+						<button className="bg-eco-white border text-md my-1 w-full h-14 rounded-full hover:text-eco-grey transition ease-in active:scale-95" 
+						onClick={()=>addList(data[0])}>
 							Whishilst <FavoriteBorderIcon />{" "}
 						</button>
 					</div>

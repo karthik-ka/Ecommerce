@@ -7,7 +7,13 @@ const cartSlice = createSlice({
     },
     reducers: {
         addItems: (state, action) => {
-            state.items.push(action.payload);
+            const item = state.items.find((item)=>item.id === action.payload.id)
+            if(item){
+                item.quantity++;
+                item.attributes.price = item.oneQuantityPrice * item.quantity
+            } else {
+                state.items.push({...action.payload, quantity : 1})
+            }
         },
         removeItem: (state, action) =>{
             state.items.splice(action.payload, 1);
