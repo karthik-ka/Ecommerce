@@ -108,7 +108,7 @@ const Cart = () => {
                         </div>
                         <td className='text-center'>
                            <h2 className='font-semibold text-sm'>₹{item?.attributes?.price}</h2>
-                           <span className='text-sm font-semibold transition ease-in text-eco-grey hover:text-eco-red cursor-pointer' onClick={()=>handleRemoveItems()}><DeleteOutlineOutlinedIcon fontSize='10' />Remove</span>
+                           <span className='text-sm font-semibold transition ease-in text-eco-grey hover:text-eco-red cursor-pointer' onClick={()=>handleRemoveItems(id)}><DeleteOutlineOutlinedIcon fontSize='10' />Remove</span>
                         </td>
                      </div>
                   )

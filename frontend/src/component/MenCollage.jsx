@@ -27,7 +27,7 @@ const Collage = () => {
                 <div className="row-span-2 col-span-2 bg-eco-light-grey text-eco-off-black relative">
                     <Link to={`/product/${data[0].id}`}>
                         <div className="relative">
-                            <img src={data[0]?.attributes?.thumbnail?.data?.attributes?.url} alt="no image" className="md:row-span-2 md:col-span-2 bg-eco-light-grey text-eco-off-black relative" />
+                            <img src={data[0]?.attributes?.thumbnail?.data?.attributes?.url} alt="no image" className="md:row-span-2 md:col-span-2 w-full h-[180px] md:h-[560px] xl:h-[600px] object-cover bg-eco-light-grey text-eco-off-black relative" />
                             <span className={`absolute bottom-2 right-3 flex items-center text-eco-white text-sm px-1 xl:py-1 rounded-md 
                                 ${data[0]?.attributes?.rating >= 4 ? "bg-eco-green" : data[0]?.attributes?.rating >=3 ? "bg-eco-yellow" : "bg-eco-orange" }`}><AiTwotoneStar/> {data[0]?.attributes?.rating}
                             </span>

@@ -1,10 +1,9 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
-import {AiTwotoneStar} from "react-icons/ai"
 import useFetch from "../hooks/useFetch";
 import { Procuct_skelton } from "./Shimmer";
 
-
+import {AiTwotoneStar} from "react-icons/ai"
 
 const ProductsList = ({categId, subCategId, priceRange}) => {
 
@@ -14,7 +13,7 @@ const ProductsList = ({categId, subCategId, priceRange}) => {
 			{ loading ? <Procuct_skelton card={8} /> :
 			data.map((items)=>{
 					return(
-						<Link to={`/product/${items.id}`} key={items.id} className="bg-eco-light-grey text-eco-off-black rounded-xl overflow-hidden">
+						<Link to={`/product/${items.id}`} key={items.id} className="bg-eco-light-grey text-eco-off-black rounded-xl overflow-hidden relative">
 							<div className="relative">
 								<img src={items?.attributes?.thumbnail?.data?.attributes?.url} alt="no image" className="w-full h-[180px] xl:h-[280px] object-cover object-top" />
 								<span className={`absolute bottom-2 right-2 flex items-center text-eco-white text-sm px-1 xl:py-1 rounded-md 

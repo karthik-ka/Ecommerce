@@ -27,7 +27,7 @@ const Collage = () => {
         <div className="row-span-2 col-span-2 md:col-span-1 md:row-span-1 bg-eco-light-grey text-eco-off-black relative">
             <Link to={`/product/${data[0].id}`}>
             <div className="relative">
-                <img src={data[0]?.attributes?.thumbnail?.data?.attributes?.url} alt="no image" className="w-full h-[180px] object-cover " />
+                <img src={data[0]?.attributes?.thumbnail?.data?.attributes?.url} alt="no image" className="w-full h-[180px] xl:h-[230px] object-cover " />
                 <span className={`absolute bottom-2 right-3 flex items-center text-eco-white text-sm px-1 xl:py-1 rounded-md 
                     ${data[0]?.attributes?.rating >= 4 ? "bg-eco-green" : data[0]?.attributes?.rating >=3 ? "bg-eco-yellow" : "bg-eco-orange" }`}><AiTwotoneStar/> {data[0]?.attributes?.rating}
                 </span>
@@ -49,7 +49,7 @@ const Collage = () => {
         <div className="bg-eco-light-grey text-eco-off-black relative">
             <Link to={`/product/${data[1].id}`}>
             <div className="relative">
-                <img src={data[1]?.attributes?.thumbnail?.data?.attributes?.url} alt="no image" className="w-full h-[180px] object-cover " />
+                <img src={data[1]?.attributes?.thumbnail?.data?.attributes?.url} alt="no image" className="w-full h-[180px] xl:h-[230px] object-cover " />
                 <span className={`absolute bottom-2 right-3 flex items-center text-eco-white text-sm px-1 xl:py-1 rounded-md 
                     ${data[1]?.attributes?.rating >= 4 ? "bg-eco-green" : data[1]?.attributes?.rating >=3 ? "bg-eco-yellow" : "bg-eco-orange" }`}><AiTwotoneStar/> {data[1]?.attributes?.rating}
                 </span>
@@ -71,7 +71,7 @@ const Collage = () => {
         <div className="md:row-span-2 md:col-span-2 bg-eco-light-grey text-eco-off-black relative">
             <Link to={`/product/${data[2].id}`}>
             <div className="relative">
-                <img src={data[2]?.attributes?.thumbnail?.data?.attributes?.url} alt="no image" className="w-full h-[180px] md:h-[460px] object-cover " />
+                <img src={data[2]?.attributes?.thumbnail?.data?.attributes?.url} alt="no image" className="w-full h-[180px] md:h-[560px] xl:h-[600px] object-cover " />
                 <span className={`absolute bottom-2 right-3 flex items-center text-eco-white text-sm px-1 xl:py-1 rounded-md 
                     ${data[2]?.attributes?.rating >= 4 ? "bg-eco-green" : data[2]?.attributes?.rating >=3 ? "bg-eco-yellow" : "bg-eco-orange" }`}><AiTwotoneStar/> {data[2]?.attributes?.rating}
                 </span>
@@ -93,7 +93,7 @@ const Collage = () => {
         <div className="bg-eco-light-grey text-eco-off-black relative">
             <Link to={`/product/${data[3].id}`}>
             <div className="relative">
-            <img src={data[3]?.attributes?.thumbnail?.data?.attributes?.url} alt="no image" className="w-full h-[180px] object-cover " />
+            <img src={data[3]?.attributes?.thumbnail?.data?.attributes?.url} alt="no image" className="w-full h-[180px] xl:h-[230px] object-cover " />
                 <span className={`absolute bottom-2 right-3 flex items-center text-eco-white text-sm px-1 xl:py-1 rounded-md 
                     ${data[3]?.attributes?.rating >= 4 ? "bg-eco-green" : data[3]?.attributes?.rating >=3 ? "bg-eco-yellow" : "bg-eco-orange" }`}><AiTwotoneStar/> {data[3]?.attributes?.rating}
                 </span>
@@ -115,7 +115,7 @@ const Collage = () => {
         <div className="bg-eco-light-grey text-eco-off-black relative">
             <Link to={`/product/${data[4].id}`}>
             <div className="relative">
-            <img src={data[4]?.attributes?.thumbnail?.data?.attributes?.url} alt="no image" className="w-full h-[180px] object-cover " />
+            <img src={data[4]?.attributes?.thumbnail?.data?.attributes?.url} alt="no image" className="w-full h-[180px] xl:h-[230px] object-cover " />
                 <span className={`absolute bottom-2 right-3 flex items-center text-eco-white text-sm px-1 xl:py-1 rounded-md 
                     ${data[4]?.attributes?.rating >= 4 ? "bg-eco-green" : data[4]?.attributes?.rating >=3 ? "bg-eco-yellow" : "bg-eco-orange" }`}><AiTwotoneStar/> {data[4]?.attributes?.rating}
                 </span>
