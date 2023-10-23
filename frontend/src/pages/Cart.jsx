@@ -78,7 +78,7 @@ const Cart = () => {
                               <img src={item?.attributes?.thumbnail?.data?.attributes?.url} alt="" className='w-20 md:w-24 md:h-24 object-cover rounded-lg' />
                               <div className='flex flex-col'>
                                  <h2 className='font-semibold text-left text-sm md:text-base'>{item?.attributes?.title}</h2>
-                                 <div className="flex">
+                                 {/* <div className="flex">
                                     <div className='md:mx-8 my-4'>
                                        <span className='text-xs font-semibold text-eco-grey'>Size</span>
                                        <select name="" id="" className='text-xs font-semibold text-eco-grey bg-eco-light-grey px-1 py-1 ml-1 outline-none'>
@@ -102,7 +102,7 @@ const Cart = () => {
                                           <option value="">10</option>
                                        </select>
                                     </div>
-                                 </div>
+                                 </div> */}
                               </div>
                            </td>
                         </div>
