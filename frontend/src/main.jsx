@@ -9,7 +9,7 @@ import Products from "./pages/Products"
 import Footer from "./component/Footer";
 import Error from "./component/Error";
 import Cart from "./pages/Cart";
-import Wishlist from "./pages/wishlist";
+import Wishlist from "./pages/Wishlist";
 import store from "./utils/store";
 import Success from "./pages/Success";
 import Failed from "./pages/Failed";
